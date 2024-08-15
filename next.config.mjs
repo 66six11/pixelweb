@@ -2,7 +2,7 @@
 const nextConfig = {
 
     basePath: '',
-    assetPrefix: '/next-test',
+
     output: 'export',
 
 
