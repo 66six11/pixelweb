@@ -31,17 +31,17 @@ function Imagecard({ image, author }) {
         onClick={toggleOpen}
       >
         <div
-          className={`transition delay-75 ease-out duration-300 flex ${
+          className={`transition delay-75 ease-out duration-300 flex max-[450px]:flex-col ${
             isopen
               ? "scale-100 size-3/4 relative bg-white dark:bg-slate-900  p-5 rounded-lg"
               : "scale-0"
           }`}
           onClick={stopPropagation}
         >
-          <div className="relative aspect-[2/1] w-2/3 h-full  ">
+          <div className="relative aspect-[2/1] w-2/3 h-full max-[450px]:w-full max-[450px]:h-auto  ">
             <Image className="object-contain" src={image} alt={author} fill />
           </div>
-          <div className="ml-5 relative grow">
+          <div className="ml-5 max-[450px]:ml-0 relative grow">
             {
                 //TODO:图片描述
             }
