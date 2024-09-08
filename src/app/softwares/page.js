@@ -1,11 +1,9 @@
-
-
 import Tag from "@/components/Tag";
 import Software from "@/components/Software";
 import Artist from "@/components/Artist";
 import Container from "@/components/Contanier";
 import Imagecard from "@/components/Imagecard";
-
+import Partingline from "@/components/Partingline";
 
 export default function Page() {
   var data = [
@@ -32,8 +30,9 @@ export default function Page() {
   ];
   return (
     <div>
-      <Imagecard image="./1.jpg"/>
+      <Imagecard image="./1.jpg" />
       <Container data={jsondate} />
+      <Partingline />
       <Container data={jsondate} />
       <Artist
         image="./1.jpg"
@@ -61,12 +60,15 @@ export default function Page() {
         试测试试测试测试测试测试测试试测试试测试测试测试测试测试测试测试测试测试测试测试"
       />
       {data.map((item, index) => (
-        <Tag
-          key={index}
-          image={item.image}
-          title={item.title}
-          discription={item.discription}
-        />
+        <>
+          <Tag
+            key={index}
+            image={item.image}
+            title={item.title}
+            discription={item.discription}
+          />
+          <Partingline />
+        </>
       ))}
     </div>
   );

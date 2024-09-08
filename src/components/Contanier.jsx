@@ -213,7 +213,7 @@ export function SliceButton({ id, actived, onClick }) {
     <button
       id={id}
       onClick={onClick}
-      className={`slicebutton w-14 h-2 mx-2 bg-[#6A60F8]/[.3] self-center rounded-md ${
+      className={`slicebutton w-14 h-2 mx-2 bg-[#6A60F8]/[.3] self-center rounded-md max-[450px]:w-6 max-[450px]:h-1 ${
         actived ? "buttonactive" : ""
       } `}
     ></button>
