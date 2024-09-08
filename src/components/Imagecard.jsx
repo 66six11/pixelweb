@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 
-function Imagecard({ image, author }) {
-  const [isopen, setIsOpen] = useState(false);
+import Image from "next/image";
+import { useImgValue,useImgSrc } from "./ImageView";
+
+function Imagecard({ image, author,discription }) {
+  const [isopen, setIsOpen] = useImgValue(false);
+  const [data,setDate] = useImgSrc()
 
   const toggleOpen = () => {
     setIsOpen(!isopen);
+    setDate({image,author,discription})
   };
 
-  const stopPropagation = (e) => {
-    e.stopPropagation();
-  };
 
   return (
     <>
@@ -21,36 +21,7 @@ function Imagecard({ image, author }) {
           <Image className="object-cover rounded-md" src={image} alt={author} fill />
         </div>
       </div>
-
-      <div
-        className={`${
-          isopen
-            ? "fixed top-0 left-0 flex items-center justify-center size-full z-50 bg-black/15"
-            : "absolute"
-        }`}
-        onClick={toggleOpen}
-      >
-        <div
-          className={`transition delay-75 ease-out duration-300 flex max-[450px]:flex-col ${
-            isopen
-              ? "scale-100 size-3/4 max-[450px]:size-5/6  relative bg-white dark:bg-slate-900  p-5 rounded-lg"
-              : "scale-0"
-          }`}
-          onClick={stopPropagation}
-        >
-          <div className="relative aspect-[1/1] w-2/3 h-full max-[450px]:w-full max-[450px]:h-auto  ">
-            <Image className="object-contain" src={image} alt={author} fill />
-          </div>
-          <div className="ml-5 max-[450px]:ml-0 relative grow">
-            {
-                //TODO:图片描述
-            }
-            <button className="absolute h-10 w-full bg-violet-700/50 right-0 bottom-0 rounded-md" onClick={toggleOpen}>
-              关闭
-            </button>
-          </div>
-        </div>
-      </div>
+    
     </>
   );
 }

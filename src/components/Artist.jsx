@@ -14,7 +14,7 @@ function Artist({ image, author, discription,link }) {
         />
       </div>
       <div className="relative grow w-full px-2 mt-3">
-        <p className="text-black dark:text-white text-xl">{author}</p>
+        <p className="text-black dark:text-white text-xl max-sm:text-sm">{author}</p>
         <p className="text-left max-md:hidden">{discription}</p>
       </div>
     </a>

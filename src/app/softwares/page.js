@@ -31,6 +31,7 @@ export default function Page() {
   return (
     <div>
       <Imagecard image="./1.jpg" />
+      <Imagecard image="./logo.png" author="1" />
       <Container data={jsondate} />
       <Partingline />
       <Container data={jsondate} />

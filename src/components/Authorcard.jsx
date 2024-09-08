@@ -8,8 +8,8 @@ function Authorcard({ image, author, description, link }) {
             <div className="aspect-square size-3/5 relative">
                 <Image className="object-cover rounded-full" src={image} alt={author} layout="fill"/>
             </div>
-            <p className="text-black dark:text-white text-4xl my-3">{author}</p>
-            <p className="text-center">
+            <p className="text-black dark:text-white text-4xl my-3 max-sm:text-xl">{author}</p>
+            <p className="text-center max-sm:text-sm">
                 {description}
             </p>
         </a>
