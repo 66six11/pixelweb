@@ -440,13 +440,14 @@ export default function Page() {
 
   useEffect(() => {
     // 构建指向 public 目录下 datalist.json 文件的 URL
-    const dataUrl = `${window.location.origin}/wiki/1.json`;
-    
+    const dataUrl = `${window.location}/1.json`;
+    console.log(dataUrl);
     fetch(dataUrl)
       .then(res => res.json()) // 解析 JSON 数据
       .then(json => setData(json)) // 设置状态
       .catch(err => console.error('Error fetching 1.json:', err));// 捕获错误
   }, []);
+  
   console.log("data:" + JSON.stringify(data));
   console.log("exampleJson:"+exampleJson2);
   console.log(JSON.stringify(data) == JSON.stringify(exampleJson2));
