@@ -5,15 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-function Navbar() {
+function Navbar({ title}) {
   const pathname = usePathname();
+  
   return (
   <nav className="select-none w-full h-16 z-10 bg-white fixed flex  shadow-lg shadow-slate-200 dark:shadow-gray-900 items-center  dark:bg-slate-800  dark:text-slate-50 transition-all max-lg:bottom-0 max-lg:shadow-[0_-4px_6px_1px_rgb(0,0,0,0.1)] lg:top-0 ">
       <div className ="fixed flex items-center left-80 max-lg:hidden max-2xl:left-10 max-[2000px]:left-24">
         <div className="relative  aspect-square h-16">
-          <Image src={"./logo.png"} alt="logo" fill />
+          <Image className="dark:hidden" src={"./logo.png"} alt="logo" fill />
+          <Image class="hidden dark:block " src={"./logodark.png"} alt="logo" fill />
         </div>
-        <p className="relative left-6 max-2xl:hidden text-lg tracking-[.5em]">方块像素画社区</p>
+        <p className="relative left-6 max-2xl:hidden text-lg tracking-[.5em]">{title}</p>
       </div>
 
       <div className=" mx-auto flex items-center text-nowrap text-xl max-lg:text-sm max-[450px]:text-nowrap max-[450px]:text-xs max-[450px]:mx-2 max-[450px]:justify-between max-[450px]:w-full text-black/50 dark:text-white/50 ">

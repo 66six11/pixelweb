@@ -1,7 +1,8 @@
 'use client';
 
+import ComponentsCenter from "@/components/ComponentsCenter";
+import { useEffect,useState } from "react";
 
-import { useEffect, useState } from "react";
 
 
 
@@ -11,23 +12,40 @@ export default function Home() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
+    const urls =[];
+    for (let i = 0; i < 10; i++) {
+    let url = `${window.location}/home/${i}.json`;// 构建 JSON 文件的 URL
+    urls.push(url);  
+    }
     // 构建指向 public 目录下 datalist.json 文件的 URL
-    const dataUrl = `${window.location.origin}/datalist.json`;
     
-    fetch(dataUrl)
-      .then(res => res.json()) // 解析 JSON 数据
-      .then(json => setData(json)) // 设置状态
-      .catch(err => console.error('Error fetching datalist.json:', err));// 捕获错误
+    
+    Promise.allSettled(urls.map(url => fetch(url).then(res => {
+      if (!res.ok) {
+        throw new Error(`Failed to fetch ${url}`);
+      }
+      return res.json();
+    })))
+    .then(results => {
+      // 过滤出成功的请求
+      const successfulResults = results
+        .filter(result => result.status === 'fulfilled')
+        .map(result => result.value);
+    
+      // 合并所有成功的 JSON 数据
+      const mergedData = successfulResults.flat();
+      setData(mergedData); // 设置状态
+    })
+    .catch(err => console.error('Error fetching JSON files:', err));
   }, []);
-  console.log(data);
+  console.log(JSON.stringify(data));
 
 
   
 
   return (
     <>
-    <p>Home</p>
-    <p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p><p>Home</p>
+    <ComponentsCenter data={data} />
     </>
       
   );

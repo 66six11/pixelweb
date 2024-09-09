@@ -10,7 +10,7 @@ function Tag({ image, title, description}) {
         <div className="absolute inset-0 backdrop-blur-[5px] bg-black/30  rounded-lg"></div>
         <p className="z-10 text-5xl max-lg:text-3xl text-white">{title}</p>
       </div>
-      <div className="my-4 text-center">{description}</div>
+      <p className="my-4 text-center whitespace-pre-line">{description}</p>
     </div>
   );
 }

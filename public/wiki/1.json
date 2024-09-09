@@ -1,13 +1,5 @@
 [
-    {
-      "component": "Artist",
-      "data": {
-        "image": "./1.jpg",
-        "author": "test",
-        "description": "测试",
-        "link": "aa"
-      }
-    },
+
     {
       "component": "Authorcard",
       "data": {
@@ -17,119 +9,7 @@
         "link": "aa"
       }
     },
-    {
-      "component": "Contanier",
-      "childrens": [
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        },
-        {
-          "component": "Artist",
-          "data": {
-            "image": "./1.jpg",
-            "author": "test",
-            "description": "测试",
-            "link": "aa"
-          }
-        }
-      ]
-    },
+
     {
       "component": "Flexbox",
       "childrens": [
@@ -214,7 +94,7 @@
       "data": {
         "image": "./1.jpg",
         "title": "test",
-        "description": "测试"
+        "description": "测试\n测试"
       }
     }
   ]

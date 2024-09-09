@@ -1,42 +1,41 @@
-import Authorcard from "@/components/Authorcard"; // 确保路径正确
-import Flexbox from "@/components/Flexbox";
+'use client';
+
+import ComponentsCenter from "@/components/ComponentsCenter";
+import { useEffect,useState } from "react";
+
 
 export default function Page() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const urls =[];
+    for (let i = 0; i < 10; i++) {
+    let url = `${window.location}/${i}.json`;// 构建 JSON 文件的 URL
+    urls.push(url);  
+    }
+      
+    Promise.allSettled(urls.map(url => fetch(url).then(res => {
+      if (!res.ok) {
+        throw new Error(`Failed to fetch ${url}`);
+      }
+      return res.json();
+    })))
+    .then(results => {
+      // 过滤出成功的请求
+      const successfulResults = results
+        .filter(result => result.status === 'fulfilled')
+        .map(result => result.value);
+    
+      // 合并所有成功的 JSON 数据
+      const mergedData = successfulResults.flat();
+      setData(mergedData); // 设置状态
+    })
+    .catch(err => console.error('Error fetching JSON files:', err));
+  }, []);
   return (
     <div>
-      <p>Page</p>
-      <Flexbox>
-        <Authorcard
-          image="./1.jpg"
-          author="test"
-          description="测试测试测试测试测试测试测试测试测试" // 注意属性名应为 description
-          link="aa"
-        />
-        <Authorcard
-          image="./1.jpg"
-          author="test"
-          description="测试测试测试测试测试测试测试测试测试" // 注意属性名应为 description
-          link="aa"
-        />
-        <Authorcard
-          image="./1.jpg"
-          author="test"
-          description="测试测试测试测试测试测试测试测试测试" // 注意属性名应为 description
-          link="aa"
-        />
-        <Authorcard
-          image="./1.jpg"
-          author="test"
-          description="测试测试测试测试测试测试测试测试测试" // 注意属性名应为 description
-          link="aa"
-        />
-        <Authorcard
-          image="./1.jpg"
-          author="test"
-          description="测试测试测试测试测试测试测试测试测试" // 注意属性名应为 description
-          link="aa"
-        />
-      </Flexbox>
+      
+        <ComponentsCenter data={data} />
     </div>
   );
 }
