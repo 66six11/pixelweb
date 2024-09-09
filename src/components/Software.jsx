@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-function Software({ image, title, specification, discription }) {
+function Software({ image, title, specification, description }) {
   var titleEle = <p className="text-4xl text-black dark:text-white max-[450px]:text-xl">{title}</p>;
   var Url = null;
   const regex = /\[(.*?)\]\((.*?)\)/;
@@ -40,7 +40,7 @@ function Software({ image, title, specification, discription }) {
         <p className="text-black dark:text-white max-xl:hidden">介绍：</p>
         </div>
         <div className="grow overflow-auto hiddenOverflow">
-          <p>{discription}</p>
+          <p>{description}</p>
         </div>
       </div>
     </div>

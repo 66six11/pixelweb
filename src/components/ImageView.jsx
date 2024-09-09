@@ -13,7 +13,7 @@ export function useImgSrc() {
 }
 export default function ImageView({ children }) {
   const [isopen, setIsOpen] = useState(false);
-  const [date, setDate] = useState(null);
+  const [data, setDate] = useState(null);
   const toggleOpen = () => {
     setIsOpen(!isopen);
   };
@@ -23,7 +23,7 @@ export default function ImageView({ children }) {
   };
 
   return (
-    <imgsrc.Provider value={[date, setDate]}>
+    <imgsrc.Provider value={[data, setDate]}>
       <imgContext.Provider value={[isopen, setIsOpen]}>
         <div
           className={`${
@@ -42,21 +42,20 @@ export default function ImageView({ children }) {
             onClick={stopPropagation}
           >
             <div className="relative aspect-[1/1] w-2/3 h-full max-[450px]:w-full max-[450px]:h-auto">
-              {date && (
-                <Image
-                  className="object-contain"
-                  src={date.image}
-                  alt={date.author}
-                  fill
-                />
-              )}
+              <Image
+                className="object-contain"
+                src={data?.image}
+                alt={data?.author}
+                fill
+              />
             </div>
             <div className="ml-5 max-[450px]:ml-0 relative grow">
               {
                 // TODO: 图片描述
               }
+              {data?.description ? data.description : (<p className="text-center text-xl text-black/30 dark:text-white/30">暂无描述</p>)}
               <button
-                className="absolute h-10 w-full bg-violet-700/50 right-0 bottom-0 rounded-md"
+                className="absolute lg:hidden h-10 w-full bg-violet-700/50 right-0 bottom-0 rounded-md"
                 onClick={toggleOpen}
               >
                 关闭

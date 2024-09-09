@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-function Artist({ image, author, discription,link }) {
+function Artist({ image, author, description,link }) {
   return (
     <a href={link} target="_blank" className="flex flex-col aspect-[9/8] relative rounded-md shadow-lg dark:shadow-gray-900" >
       <div className="relative h-2/3">
@@ -15,7 +15,7 @@ function Artist({ image, author, discription,link }) {
       </div>
       <div className="relative grow w-full px-2 mt-3">
         <p className="text-black dark:text-white text-xl max-sm:text-sm">{author}</p>
-        <p className="text-left max-md:hidden">{discription}</p>
+        <p className="text-left max-md:hidden">{description}</p>
       </div>
     </a>
   );

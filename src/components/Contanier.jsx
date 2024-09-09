@@ -1,32 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
-import Artist from "./Artist";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 
-const jsondate = [
-  {
-    line: 4,
-    key1: [{ test: "1" }],
-    key2: [{ test: "2" }],
-    key3: [{ test: "3" }],
-  },
-];
+function Contanier({ children, lines }) {
+  var line = lines?lines:2; //确定行数
+  var slices = 1;
 
-function Contanier({ data }) {
-  const line = data.line ? data.line : 2; //确定行数
-  var slices = 3;
-  const keyCount = data.reduce((count, item) => {
-    const keys = Object.keys(item);
-    // 如果存在 "line" 键，则从总数中减去1
-    return count + (keys.includes("line") ? keys.length - 1 : keys.length);
-  }, 0);
-  console.log(keyCount);
-  if (keyCount > line * 3) {
-    //超过行数
-    slices = keyCount / (line * 3) + 1;
-    console.log(slices);
-    for (let i = 0; i < slices; i++) {} //TODO:分割
-  }
+  const filteredChildren = React.Children.toArray(children).filter((child) =>
+    React.isValidElement(child)
+  );
+  const childrenCount = filteredChildren.length;
+
+
   const [activeId, setActiveId] = useState(null);
   const contanier = useRef(null);
 
@@ -44,7 +29,7 @@ function Contanier({ data }) {
         currentElementId = element.id;
       }
     });
-    console.log(currentElementId);
+
     setActiveId(currentElementId);
     return currentElementId; // 更新状态而不是直接操作 DOM
   };
@@ -64,7 +49,7 @@ function Contanier({ data }) {
       event.preventDefault();
       const currentId = update();
 
-      console.log(event.deltaY);
+  
       if (event.deltaY > 0) {
         if (+currentId + 1 > slices) {
           change("1");
@@ -81,9 +66,11 @@ function Contanier({ data }) {
     };
     if (scrollContainer) {
       scrollContainer.addEventListener("scroll", update);
-      contanier.current.addEventListener("wheel", handleWheel, {
-        passive: false,
-      });
+      if (slices > 1) {
+        contanier.current.addEventListener("wheel", handleWheel, {
+          passive: false,
+        });
+      }
     }
 
     return () => {
@@ -92,106 +79,50 @@ function Contanier({ data }) {
       }
     };
   }, [slices, change]);
+  if (childrenCount > line * 3) {
+    //超过行数
+    if (childrenCount % (line * 3) === 0) {
+      slices =parseInt( childrenCount / (line * 3));
+    } else {
+      slices += parseInt( childrenCount / (line * 3));
+    }
+  
+    const slicedChildren = [];
+    for (let i = 0; i < childrenCount; i += line * 3) {
+      slicedChildren.push(filteredChildren.slice(i, i + line * 3));
+   
+    }
 
+    return (
+      <div className="contanier relative  " ref={contanier}>
+        <div
+          className={`snap-mandatory snap-x flex relative overflow-x-auto hiddenOverflow`}
+        >
+          {slicedChildren.map((slice, index) => (
+            <Slice key={index + 1} id={`${index + 1}`}>
+              {slice}
+            </Slice>
+          ))}
+        </div>
+        <div className="flex justify-center my-2 relative select-none ">
+          {Array.from({ length: slices }, (_, i) => (
+            <SliceButton
+              key={i + 1}
+              id={`${i + 1}`}
+              actived={activeId === `${i + 1}`}
+              onClick={() => change(`${i + 1}`)}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="contanier relative  " ref={contanier}>
       <div
         className={`snap-mandatory snap-x flex relative overflow-x-auto hiddenOverflow`}
       >
-        <Slice id="1">
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-        测试测试测试测试测"
-            link="a"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-        测试测试测试测试测"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-      测试测试测试测试测"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-    测试测试测试测试测"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-  测试测试测试测试测"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-        测试测试测试测试测"
-          />
-        </Slice>
-        <Slice id="2">
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-        测试测试测试测试测"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-        测试测试测试测试测"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-      测试测试测试测试测"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-    测试测试测试测试测"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-  测试测试测试测试测"
-          />
-          <Artist
-            image="./1.jpg"
-            author="author:"
-            discription="测试测试测试测试测试测试测试测试测试测试测试测试
-        测试测试测试测试测"
-          />
-        </Slice>
-      </div>
-      <div className="flex justify-center my-2 relative select-none ">
-        <SliceButton
-          id="1"
-          actived={activeId === "1"}
-          onClick={() => change("1")}
-        />
-        <SliceButton
-          id="2"
-          actived={activeId === "2"}
-          onClick={() => change("2")}
-        />
-        <SliceButton
-          id="3"
-          actived={activeId === "3"}
-          onClick={() => change("3")}
-        />
+        <Slice id="1">{children}</Slice>
       </div>
     </div>
   );

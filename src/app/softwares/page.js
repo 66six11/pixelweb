@@ -4,18 +4,20 @@ import Artist from "@/components/Artist";
 import Container from "@/components/Contanier";
 import Imagecard from "@/components/Imagecard";
 import Partingline from "@/components/Partingline";
+import Gridbox from "@/components/Gridbox";
+    
 
 export default function Page() {
   var data = [
     {
       title: "软件教程",
-      discription:
+      description:
         "Visual Studio Code is a source-code editor developed by Microsoft for Windows, Linux and macOS.",
       image: "./1.jpg",
     },
     {
       title: "软件教程",
-      discription:
+      description:
         "Visual Studio Code is a source-code editor developed by Microsoft for Windows, Linux and macOS.",
       image: "./1.jpg",
     },
@@ -30,15 +32,22 @@ export default function Page() {
   ];
   return (
     <div>
+      <Gridbox>
       <Imagecard image="./1.jpg" />
-      <Imagecard image="./logo.png" author="1" />
+      <Imagecard image="./1.jpg" />
+      <Imagecard image="./1.jpg" />
+      <Imagecard image="./1.jpg" />
+      <Imagecard image="./1.jpg" />
+      <Imagecard image="./1.jpg" />
+      <Imagecard image="./logo.png" author="1" description={(<p>试测试测试测试测试测试</p>)}/>
+      </Gridbox>
       <Container data={jsondate} />
       <Partingline />
       <Container data={jsondate} />
       <Artist
         image="./1.jpg"
         author="author:"
-        discription="测试测试测试测试测试测试测试测试测试测试测试测试
+        description="测试测试测试测试测试测试测试测试测试测试测试测试
         测试测试测试测试测"
         link="a"
       />
@@ -50,7 +59,7 @@ export default function Page() {
           "适用平台：pc",
           "直达：[链接](https://aa)",
         ]}
-        discription="测试测试测试测试测试测试测试测试测试测试测试测试
+        description="测试测试测试测试测试测试测试测试测试测试测试测试
         测试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试
         试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测
         试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试
@@ -66,7 +75,7 @@ export default function Page() {
             key={index}
             image={item.image}
             title={item.title}
-            discription={item.discription}
+            description={item.description}
           />
           <Partingline />
         </>

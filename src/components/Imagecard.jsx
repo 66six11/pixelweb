@@ -4,13 +4,13 @@
 import Image from "next/image";
 import { useImgValue,useImgSrc } from "./ImageView";
 
-function Imagecard({ image, author,discription }) {
+function Imagecard({ image, author,description }) {
   const [isopen, setIsOpen] = useImgValue(false);
   const [data,setDate] = useImgSrc()
 
   const toggleOpen = () => {
     setIsOpen(!isopen);
-    setDate({image,author,discription})
+    setDate({image,author,description})
   };
 
 
