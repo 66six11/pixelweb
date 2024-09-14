@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 
-function Contanier({ children, lines }) {
+function Contanier({ children, lines ,keyid}) {
   var line = lines?lines:2; //确定行数
   var slices = 1;
 
@@ -94,7 +94,7 @@ function Contanier({ children, lines }) {
     }
 
     return (
-      <div className="contanier relative  " ref={contanier}>
+      <div className="contanier relative  " ref={contanier} keyid={keyid}>
         <div
           className={`snap-mandatory snap-x flex relative overflow-x-auto hiddenOverflow`}
         >
@@ -118,7 +118,7 @@ function Contanier({ children, lines }) {
     );
   }
   return (
-    <div className="contanier relative  " ref={contanier}>
+    <div className="contanier relative  " ref={contanier} keyid={keyid}>
       <div
         className={`snap-mandatory snap-x flex relative overflow-x-auto hiddenOverflow`}
       >
@@ -150,5 +150,5 @@ export function SliceButton({ id, actived, onClick }) {
     ></button>
   );
 }
-
+Contanier.displayName = "Contanier";
 export default Contanier;

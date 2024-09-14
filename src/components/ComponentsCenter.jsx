@@ -8,13 +8,14 @@ import Partingline from "./Partingline";
 import Software from "./Software";
 import Imagecard from "./Imagecard";
 import Tag from "./Tag";
-
-
+import Editmode from "./Editmode";
 
 export default function ComponentsCenter({ data }) {
-    if (!data) {
-        return <p>Loading...</p>;
-      }
+
+
+  if (!data) {
+    return <p>Loading...</p>;
+  }
   return (
     <>
       {data.map((item, index) =>
@@ -23,9 +24,12 @@ export default function ComponentsCenter({ data }) {
     </>
   );
 }
-
-function selectComponent(component, param) {
-  
+function withEditmode(Component) {
+  return function WrappedComponent(props) {
+    return <Editmode component={Component} {...props} />;
+  };
+}
+function selectComponent(component, data) {
   if (
     component !== "Contanier" &&
     component !== "Flexbox" &&
@@ -33,17 +37,17 @@ function selectComponent(component, param) {
   ) {
     switch (component) {
       case "Artist":
-        return setAritst(param);
+        return withEditmode(Artist)(data);
       case "Authorcard":
-        return setAuthorcard(param);
+        return withEditmode(Authorcard)(data);
       case "Partingline":
-        return setPartingline();
+        return withEditmode(Partingline)(data);
       case "Software":
-        return setSoftware(param);
+        return withEditmode(Software)(data);
       case "Imagecard":
-        return setImagecard(param);
+        return withEditmode(Imagecard)(data);
       case "Tag":
-        return setTag(param);
+        return withEditmode(Tag)(data);
       default:
         console.log(
           "不存在组件：" +
@@ -59,11 +63,11 @@ function selectComponent(component, param) {
   ) {
     switch (component) {
       case "Contanier":
-        return setContanier(param);
+        return setContanier(data);
       case "Flexbox":
-        return setFlexbox(param);
+        return setFlexbox(data);
       case "Gridbox":
-        return setGridbox(param);
+        return setGridbox(data);
       default:
         console.log(
           "不存在组件：" +
@@ -77,77 +81,58 @@ function selectComponent(component, param) {
     return null;
   }
 }
+
 function setAritst(data) {
-  return (
-    <Artist
-      image={data?.image}
-      author={data?.author}
-      description={data?.description}
-      link={data?.link}
-    ></Artist>
-  );
+  return <Artist {...data}></Artist>;
 }
+
 function setAuthorcard(data) {
-  return (
-    <Authorcard
-      image={data?.image}
-      author={data?.author}
-      description={data?.description}
-      link={data?.link}
-    ></Authorcard>
-  );
+  return <Authorcard {...data}></Authorcard>;
 }
+
 function setSoftware(data) {
-  return (
-    <Software
-      image={data?.image}
-      title={data?.title}
-      specification={data?.specification}
-      description={data?.description}
-    ></Software>
-  );
+  return <Software {...data}></Software>;
 }
+
 function setImagecard(data) {
-  return (
-    <Imagecard
-      image={data?.image}
-      author={data?.author}
-      description={data?.description}
-    ></Imagecard>
-  );
+  return <Imagecard {...data}></Imagecard>;
 }
+
 function setTag(data) {
-    console.log("Tag"+data?.description)
+  return <Tag {...data}></Tag>;
+}
+
+function setContanier(childrens) {
+  console.log("行数" + childrens[0].line);
   return (
-    <Tag
-      image={data?.image}
-      title={data?.title}
-      description = {data?.description}
-    ></Tag>
+    <Contanier {...childrens[0]}>
+      {childrens.map((item, index) =>
+        selectComponent(item.component, item.data)
+      )}
+    </Contanier>
   );
 }
-function setContanier(childrens) {
-   console.log("行数"+childrens[0].line); 
-  return <Contanier lines={childrens[0].line} > {childrens.map((item, index) => selectComponent(item.component, item.data))} </Contanier>;
-}
+
 function setFlexbox(childrens) {
   return (
-    <Flexbox>
+    <Flexbox {...childrens[0]}>
       {childrens.map((item, index) =>
         selectComponent(item.component, item.data)
       )}
     </Flexbox>
   );
 }
+
 function setGridbox(childrens) {
   return (
-    <Gridbox>
+    <Gridbox {...childrens[0]}>
       {childrens.map((item, index) =>
         selectComponent(item.component, item.data)
       )}
     </Gridbox>
   );
 }
-function setPartingline() {
-  return <Partingline />;
+
+function setPartingline(data) {
+  return <Partingline {...data} />;
 }

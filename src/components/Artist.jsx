@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import React from "react";
 
-function Artist({ image, author, description,link }) {
+const Artist = React.forwardRef(function Artist({ image, author, description, link, keyid }, ref)  {
   return (
-    <a href={link} target="_blank" className="flex flex-col aspect-[9/8] relative rounded-md shadow-lg dark:shadow-gray-900" >
+    <a ref={ref} href={link} keyid={keyid} target="_blank" className=" flex flex-col aspect-[9/8] relative rounded-md shadow-lg dark:shadow-gray-900">
       <div className="relative h-2/3">
         <Image
-          className="object-cover rounded-t-md "
+          className="object-cover rounded-t-md"
           src={image}
           alt="Picture of the author"
           fill
@@ -19,6 +20,6 @@ function Artist({ image, author, description,link }) {
       </div>
     </a>
   );
-}
-
+});
+Artist.displayName = "Artist";
 export default Artist;

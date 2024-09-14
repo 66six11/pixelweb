@@ -1,12 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import React from "react";
 
-function Software({ image, title, specification, description }) {
-  var titleEle = <p className="text-4xl text-black dark:text-white max-[450px]:text-xl">{title}</p>;
+const Software =React.forwardRef( function Software({ image, author, specification, description,keyid },ref) {
+  var titleEle = <p className="text-4xl text-black dark:text-white max-[450px]:text-xl">{author}</p>;
+  console.log(specification);
+  
+  
+  const authorStr = author || '';
   var Url = null;
   const regex = /\[(.*?)\]\((.*?)\)/;
-  const match = title.match(regex);
+  const match = authorStr.match(regex);
   if (match) {
     const [matchedText, url] = match.slice(1);
     Url = url;
@@ -18,12 +23,12 @@ function Software({ image, title, specification, description }) {
   }
 
   return (
-    <div className="relative flex w-full aspect-[4/1]">
+    <div keyid={keyid} ref={ref} className="relative flex w-full aspect-[4/1]">
       <a href={Url} target="_blank" className="relative aspect-square">
         <Image
           className="object-cover rounded-md"
           src={image}
-          alt={title}
+          alt={author}
           fill
         />
       </a>
@@ -32,7 +37,7 @@ function Software({ image, title, specification, description }) {
         {titleEle}
         <div className="max-[800px]:hidden">
          
-          {specification.map((item, index) => (
+          {specification&&specification.map((item, index) => (
             <Specification key={index} text={item} />
           ))}
         
@@ -45,7 +50,7 @@ function Software({ image, title, specification, description }) {
       </div>
     </div>
   );
-}
+})
 
 export function Specification({ text }) {
   if (typeof text !== "string") {
@@ -75,4 +80,5 @@ export function Specification({ text }) {
     </div>
   );
 }
+Software.displayName = "Software";
 export default Software;

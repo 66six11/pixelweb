@@ -13,7 +13,7 @@ function Navbar({ title}) {
       <div className ="fixed flex items-center left-80 max-lg:hidden max-2xl:left-10 max-[2000px]:left-24">
         <div className="relative  aspect-square h-16">
           <Image className="dark:hidden" src={"./logo.png"} alt="logo" fill />
-          <Image class="hidden dark:block " src={"./logodark.png"} alt="logo" fill />
+          <Image className="hidden dark:block " src={"./logodark.png"} alt="logo" fill />
         </div>
         <p className="relative left-6 max-2xl:hidden text-lg tracking-[.5em]">{title}</p>
       </div>
@@ -38,5 +38,5 @@ function Navbar({ title}) {
     </nav>
   );
 }
-
+Navbar.displayName = "Navbar";
 export default Navbar;

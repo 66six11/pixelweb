@@ -2,9 +2,10 @@
 
 
 import Image from "next/image";
-import { useImgValue,useImgSrc } from "./ImageView";
+import  { useImgValue,useImgSrc } from "./ImageView";
+import React from "react";
 
-function Imagecard({ image, author,description }) {
+const Imagecard = React.forwardRef(function Imagecard({ image, author,description,keyid },ref) {
   const [isopen, setIsOpen] = useImgValue(false);
   const [data,setDate] = useImgSrc()
 
@@ -16,7 +17,7 @@ function Imagecard({ image, author,description }) {
 
   return (
     <>
-      <div className="relative" onClick={toggleOpen}>
+      <div keyid={keyid} ref={ref} className="relative" onClick={toggleOpen}>
         <div className="relative aspect-[2/1] w-full">
           <Image className="object-cover rounded-md" src={image} alt={author} fill />
         </div>
@@ -24,6 +25,6 @@ function Imagecard({ image, author,description }) {
     
     </>
   );
-}
-
+})
+Imagecard.displayName = "Imagecard";
 export default Imagecard;

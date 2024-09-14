@@ -1,12 +1,14 @@
 'use client';
 
+
 import ComponentsCenter from "@/components/ComponentsCenter";
 import { useEffect,useState } from "react";
+import dynamic from "next/dynamic";
 
 
 
 
-
+const May = dynamic(() =>process.env.NODE_ENV==="development" ?import('@/components/Test1'):null,{ssr:false});
 
 export default function Home() {
   const [data, setData] = useState(null);
@@ -46,6 +48,7 @@ export default function Home() {
   return (
     <>
     <ComponentsCenter data={data} />
+    <May/>
     </>
       
   );
