@@ -10,11 +10,11 @@
   },
   {
     "component": "Flexbox",
-    "id": "2024817011",
+    "id": "202481704641",
     "childrens": [
       {
         "component": "Authorcard",
-        "id": "202481704644",
+        "id": "202481705832",
         "data": {
           "image": "./1.jpg",
           "author": "初始值",
@@ -24,23 +24,17 @@
       },
       {
         "component": "Authorcard",
-        "id": "20248170478",
+        "id": "202481705925",
         "data": {
           "image": "./1.jpg",
           "author": "初始值",
           "description": "初始值",
           "link": "初始值"
         }
-      }
-    ]
-  },
-  {
-    "component": "Flexbox",
-    "id": "202481704641",
-    "childrens": [
+      },
       {
         "component": "Authorcard",
-        "id": "202481704645",
+        "id": "202481705942",
         "data": {
           "image": "./1.jpg",
           "author": "初始值",
