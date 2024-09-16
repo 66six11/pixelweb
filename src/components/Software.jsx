@@ -37,7 +37,7 @@ const Software =React.forwardRef( function Software({ image, author, specificati
         {titleEle}
         <div className="max-[800px]:hidden">
          
-          {specification&&specification.map((item, index) => (
+          {specification&&specification.split("\n").map((item, index) => (
             <Specification key={index} text={item} />
           ))}
         
@@ -59,7 +59,7 @@ export function Specification({ text }) {
 
   const [platform, description] = text.split("：");
 
-  if (description.includes("https://") || description.includes("http://")) {
+  if (description?.includes("https://") || description?.includes("http://")) {
     const regex = /\[(.*?)\]\((.*?)\)/;
     const match = description.match(regex);
     const [matchedText, url] = match.slice(1);

@@ -1,12 +1,11 @@
-{
-    "component": "Artist",
-    
+[
+  {
+    "component": "Tag",
+    "id": "2024816232336",
     "data": {
-      
       "image": "./1.jpg",
-      "author": "test",
-      "description": "测试",
-      "link": "aa",
-      "keyid":"0"
+      "title": "初始值",
+      "description": "初始值"
     }
-}
+  }
+]

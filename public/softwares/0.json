@@ -1,0 +1,27 @@
+[
+  {
+    "component": "Tag",
+    "id": "2024816232232",
+    "data": {
+      "image": "./1.jpg",
+      "title": "初始值",
+      "description": "初始值"
+    }
+  },
+  {
+    "component": "Gridbox",
+    "id": "202481704554",
+    "childrens": [
+      {
+        "component": "Artist",
+        "id": "202481704555",
+        "data": {
+          "image": "./1.jpg",
+          "author": "初始值",
+          "description": "初始值",
+          "link": "初始值"
+        }
+      }
+    ]
+  }
+]

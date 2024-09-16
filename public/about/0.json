@@ -1,0 +1,18 @@
+[
+  {
+    "component": "Gridbox",
+    "id": "20248170446",
+    "childrens": [
+      {
+        "component": "Artist",
+        "id": "202481704411",
+        "data": {
+          "image": "./about0images/0fb0ef4e-6c07-43ed-a5e3-54c725993137.jpg",
+          "author": "初始值",
+          "description": "初始值",
+          "link": "初始值"
+        }
+      }
+    ]
+  }
+]

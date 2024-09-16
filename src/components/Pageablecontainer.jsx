@@ -2,18 +2,30 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 
-function Contanier({ children, lines ,keyid}) {
-  var line = lines?lines:2; //确定行数
-  var slices = 1;
-
+function Pageablecontainer({ children, lines, keyid }) {
   const filteredChildren = React.Children.toArray(children).filter((child) =>
     React.isValidElement(child)
   );
   const childrenCount = filteredChildren.length;
 
-
   const [activeId, setActiveId] = useState(null);
   const contanier = useRef(null);
+  const [slices, setSlices] = useState(1);
+  const [line, setLine] = useState(2);
+  if (lines) {
+    setLine(lines);
+  }
+
+  const updateSlices = () => {
+    let numSlices = 1;
+    if (childrenCount > line * 3) {
+      numSlices = Math.ceil(childrenCount / (line * 3));
+    }
+    setSlices(numSlices); // 更新状态
+  };
+  useEffect(() => {
+    updateSlices(); // 重新计算 slices
+  }, [children]); // 当 children 改变时触发
 
   const update = () => {
     const scrollContainer = contanier.current.querySelector(".snap-mandatory");
@@ -49,7 +61,6 @@ function Contanier({ children, lines ,keyid}) {
       event.preventDefault();
       const currentId = update();
 
-  
       if (event.deltaY > 0) {
         if (+currentId + 1 > slices) {
           change("1");
@@ -79,31 +90,26 @@ function Contanier({ children, lines ,keyid}) {
       }
     };
   }, [slices, change]);
-  if (childrenCount > line * 3) {
-    //超过行数
-    if (childrenCount % (line * 3) === 0) {
-      slices =parseInt( childrenCount / (line * 3));
-    } else {
-      slices += parseInt( childrenCount / (line * 3));
-    }
-  
-    const slicedChildren = [];
-    for (let i = 0; i < childrenCount; i += line * 3) {
-      slicedChildren.push(filteredChildren.slice(i, i + line * 3));
-   
-    }
 
-    return (
-      <div className="contanier relative  " ref={contanier} keyid={keyid}>
-        <div
-          className={`snap-mandatory snap-x flex relative overflow-x-auto hiddenOverflow`}
-        >
-          {slicedChildren.map((slice, index) => (
-            <Slice key={index + 1} id={`${index + 1}`}>
-              {slice}
-            </Slice>
-          ))}
-        </div>
+  const slicedChildren = [];
+  for (let i = 0; i < childrenCount; i += line * 3) {
+    slicedChildren.push(filteredChildren.slice(i, i + line * 3));
+  }
+
+  return (
+    <div className="contanier relative  " ref={contanier} keyid={keyid}>
+      <div
+        className={`snap-mandatory snap-x flex relative overflow-x-auto hiddenOverflow`}
+      >
+        {slicedChildren.map((slice, index) => (
+          <Slice key={index + 1} id={`${index + 1}`}>
+            {slice}
+          </Slice>
+        ))}
+      </div>
+      {slices === 1 ? (
+        <></>
+      ) : (
         <div className="flex justify-center my-2 relative select-none ">
           {Array.from({ length: slices }, (_, i) => (
             <SliceButton
@@ -114,16 +120,7 @@ function Contanier({ children, lines ,keyid}) {
             />
           ))}
         </div>
-      </div>
-    );
-  }
-  return (
-    <div className="contanier relative  " ref={contanier} keyid={keyid}>
-      <div
-        className={`snap-mandatory snap-x flex relative overflow-x-auto hiddenOverflow`}
-      >
-        <Slice id="1">{children}</Slice>
-      </div>
+      )}
     </div>
   );
 }
@@ -132,7 +129,7 @@ export function Slice({ children, id }) {
   return (
     <div
       id={id}
-      className={`slice${id} grid grid-cols-3 gap-x-3 gap-y-4 shrink-0 snap-normal w-full snap-center px-2 py-4 max-lg:grid-cols-2`}
+      className={`slice${id} grid grid-cols-3 gap-x-3 gap-y-4  justify-items-center shrink-0 snap-normal w-full snap-center px-2 py-4 max-lg:grid-cols-2`}
     >
       {children}
     </div>
@@ -150,5 +147,5 @@ export function SliceButton({ id, actived, onClick }) {
     ></button>
   );
 }
-Contanier.displayName = "Contanier";
-export default Contanier;
+Pageablecontainer.displayName = "Pageablecontainer";
+export default Pageablecontainer;

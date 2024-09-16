@@ -1,0 +1,48 @@
+[
+  {
+    "component": "Software",
+    "id": "2024816223431",
+    "data": {
+      "image": "./1.jpg",
+      "author": "初始值",
+      "specification": "初始值",
+      "description": "初始值",
+      "link": "初始值"
+    }
+  },
+  {
+    "component": "Tag",
+    "id": "2024816231153",
+    "data": {
+      "image": "./1.jpg",
+      "title": "初始值",
+      "description": "初始值"
+    }
+  },
+  {
+    "component": "Software",
+    "id": "2024816231155",
+    "data": {
+      "image": "./1.jpg",
+      "author": "初始值",
+      "specification": "初始值",
+      "description": "初始值",
+      "link": "初始值"
+    }
+  },
+  {
+    "component": "Flexbox",
+    "id": "20248170115",
+    "childrens": [
+      {
+        "component": "Imagecard",
+        "id": "20248170119",
+        "data": {
+          "image": "./1.jpg",
+          "author": "初始值",
+          "description": "初始值"
+        }
+      }
+    ]
+  }
+]
