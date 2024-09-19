@@ -114,7 +114,7 @@ export default function Editcenter({ fliename, path }) {
 
   const removeElement = useCallback(
     async (id) => {
-      const result = findIndexInTree(items, id); // 假设 'items' 是您存储树形数据的数组
+      const result = findIndexInTree(items, id);
       if (!result) {
         console.error("Element not found");
         return; // 如果未找到元素，终止执行
@@ -123,7 +123,7 @@ export default function Editcenter({ fliename, path }) {
 
       // 如果是根级别元素
       if (!result.isChild) {
-        if (newArray[result.index]?.childrens?.length !== 0) {
+        if (newArray[result.index]?.hasOwnProperty("childrens")) {
           for (const item of newArray[result.index].childrens) {
             if (item?.data.image !== "./1.jpg") {
               try {
@@ -134,9 +134,16 @@ export default function Editcenter({ fliename, path }) {
               }
             }
           }
+        } else if (newArray[result.index]?.data?.image !== "./1.jpg") {
+          try {
+            await deleteImage(newArray[result.index].data.image); // 等待图片删除完成
+            console.log("图片删除成功", newArray[result.index].data.image);
+          } catch (error) {
+            console.error("Failed to delete image:", error);
+          }
         }
         newArray.splice(result.index, 1);
-      } else {
+      } else if (result.isChild) {
         const { index, childIndex } = result;
 
         if (newArray[index].childrens[childIndex]?.data?.image !== "./1.jpg") {

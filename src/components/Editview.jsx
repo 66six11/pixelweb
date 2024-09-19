@@ -56,7 +56,7 @@ export default function Editview({ children }) {
   const setdata = useCallback(async () => {
     console.log("formdata", formData.get("image"));
     console.log("editProps", editProps.image);
-    const response = await addImage(formData, "image",editProps.image,imagepath);
+    const response = await addImage(formData, "image",editProps.image,imagepath,id);
     alert(JSON.stringify(response));
     const newprops = { ...interProps, image: response.Path };
     mapodifElement(id, newprops);

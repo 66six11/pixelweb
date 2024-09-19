@@ -1,40 +1,5 @@
 [
   {
-    "component": "Tag",
-    "id": "2024816232029",
-    "data": {
-      "image": "./1.jpg",
-      "title": "初始值",
-      "description": "初始值"
-    }
-  },
-  {
-    "component": "Flexbox",
-    "id": "2024817011",
-    "childrens": [
-      {
-        "component": "Authorcard",
-        "id": "202481704644",
-        "data": {
-          "image": "./1.jpg",
-          "author": "初始值",
-          "description": "初始值",
-          "link": "初始值"
-        }
-      },
-      {
-        "component": "Authorcard",
-        "id": "20248170478",
-        "data": {
-          "image": "./1.jpg",
-          "author": "初始值",
-          "description": "初始值",
-          "link": "初始值"
-        }
-      }
-    ]
-  },
-  {
     "component": "Flexbox",
     "id": "202481704641",
     "childrens": [

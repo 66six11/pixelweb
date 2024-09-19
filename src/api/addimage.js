@@ -1,6 +1,6 @@
 "use server";
 import { deleteImage } from "./deleteimage";
-export async function addImage(formData, key, oldimage,imagepath) {
+export async function addImage(formData, key, oldimage,imagepath,id) {
   const fs = require("fs");
   const path = require("path");
   const { Buffer } = require("buffer");
@@ -26,8 +26,8 @@ export async function addImage(formData, key, oldimage,imagepath) {
   if (!allowedTypes.includes(file.type)) {
     throw new Error("不支持的文件类型");
   }
-
-  const filePath = path.join(process.cwd(), `public/${imagepath}`, file.name); // 指定文件保存路径
+  const extension = path.extname(file.name); // 获取文件扩展名// 使用 id 作为文件名，保留原始扩展名
+  const filePath = path.join(process.cwd(), `public/${imagepath}`, `${id}${extension}`); // 指定文件保存路径
 
   // 创建目录（如果不存在的话）
   const dir = path.dirname(filePath);
@@ -43,6 +43,6 @@ export async function addImage(formData, key, oldimage,imagepath) {
   if (oldimage) {
    await deleteImage(oldimage);
   }
-  const Path = `./${imagepath}/${file.name}`; // 获取文件路径
+  const Path = `./${imagepath}/${id}${extension}`; // 获取文件路径
   return { success: true, Path }; // 返回成功状态和文件路径
 }
