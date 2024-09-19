@@ -21,9 +21,8 @@ export default function ComponentsCenter({ data }) {
       {data.map((item, index) =>
         selectsataicComponent(
           item.component,
-          
+
           item.data ? item.data : item.childrens
-          
         )
       )}
     </>
@@ -204,14 +203,12 @@ function SetFlexbox({ id, childrens }) {
           selectComponent(item?.component, item?.id, item?.data, index)
         )}
         <div className="flex flex-col items-center justify-center my-2 relative w-full  ">
-
           <button
             onClick={() => addcomponent(id, "Authorcard")}
             className="bg-blue-600 text-white rounded-md p-2"
           >
             添加Authorcard
           </button>
-
         </div>
       </Flexbox>
     </SortableItem>
@@ -224,8 +221,8 @@ function SetGridbox({ id, childrens }) {
   console.log("子元素个数" + childrens);
   return (
     <SortableItem id={id}>
-      <Gridbox >
-      {childrens.map((item, index) =>
+      <Gridbox>
+        {childrens.map((item, index) =>
           selectComponent(item?.component, item?.id, item?.data, index)
         )}
         <div className="flex flex-col items-center justify-center my-2 relative w-full  ">
@@ -253,13 +250,26 @@ function SetGridbox({ id, childrens }) {
   );
 }
 function setstaticContanier(childrens) {
-  return <Pageablecontainer>{childrens}</Pageablecontainer>;
+  return (
+    <Pageablecontainer>
+      {" "}
+      {childrens.map((item, index) =>
+        selectsataicComponent(item?.component,  item?.data)
+      )}
+    </Pageablecontainer>
+  );
 }
 function serstaticFlexbox(childrens) {
-  return <Flexbox>{childrens}</Flexbox>;
+  return <Flexbox>      {" "}
+  {childrens.map((item, index) =>
+    selectsataicComponent(item?.component,item?.data)
+  )}</Flexbox>;
 }
 function setsataicGridbox(childrens) {
-  return <Gridbox>{childrens}</Gridbox>;
+  return <Gridbox>      {" "}
+  {childrens.map((item, index) =>
+    selectsataicComponent(item?.component,  item?.data)
+  )}</Gridbox>;
 }
 
 function setsataicPartingline() {
