@@ -30,7 +30,7 @@ export default function Page() {
         console.log(its); // 设置状态为正确的数据结构
       })
       .catch((err) => console.error("Error fetching JSON files:", err));
-  }, [fliename]);
+  }, [preview]);
   if (process.env.NODE_ENV === "development" && !preview) {
     return (
       <>
