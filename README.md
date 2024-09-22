@@ -33,13 +33,13 @@ npm run dev
 
 
 ## Tag组件
-![alt text](image.png)
-![alt text](image-1.png)
+![alt text](document/image.png)
+![alt text](document/image-1.png)
 description可接受换行，如果想要换行直接回车即可
 
 ## 软件卡片组件
-![alt text](image-7.png)
-![alt text](image-8.png)
+![alt text](document/image-7.png)
+![alt text](document/image-8.png)
 
 specification可以写一些软件的特性，如语言、操作系统、版本等，换行即可应用新的段落，注意换行一定是输入了回车。可以使用"\[]()"语法添加链接，如"\[GitHub](https://github.com/)"链接中请包含http://或https://。两者颜色的文本是使用中文全角复合"："进行的分割，请勿使用半角冒号":"。
 
@@ -47,12 +47,12 @@ link中填写的链接是应用在标题和图片中，link可为空。
 
 ## 三种容器盒子（网格盒子，弹性盒子，可翻页盒子）
 ### 网格盒子
-![alt text](image-2.png)
+![alt text](document/image-2.png)
 可以无限向下扩展，排列方式如图所示
 ### 弹性盒子
-![alt text](image-4.png)
+![alt text](document/image-4.png)
 可以根据内容自动调整大小，目前只用于放置作者卡片，排列方式如图所示
 ### 可翻页盒子
-![alt text](image-5.png)
-![alt text](image-6.png)
+![alt text](document/image-5.png)
+![alt text](document/image-6.png)
 每页的上限是6个，可以自动分页，排列方式如图所示，鼠标滚轮在上面滚动可以翻页，也可以点击下方按钮翻页
