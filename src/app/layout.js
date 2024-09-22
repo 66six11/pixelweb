@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   const title  = metadata.title;
   return (
     <html lang="zh-cn" className={myFont.className}>
-      <body className="bg-slate-100 dark:bg-slate-900 text-black/60 dark:text-white/60">
+      <body className="bg-slate-50 dark:bg-slate-900 text-black/60 dark:text-white/60">
         <Navbar title={title} />
         <ImageView>
         

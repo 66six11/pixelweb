@@ -26,7 +26,7 @@ export default function Editview({ children }) {
     return;
   });
 
-  const { mapodifElement ,imagepath} = useRemovecontext();
+  const { mapodifElement, imagepath } = useRemovecontext();
 
   const stopPropagation = (e) => {
     e.stopPropagation();
@@ -56,9 +56,18 @@ export default function Editview({ children }) {
   const setdata = useCallback(async () => {
     console.log("formdata", formData.get("image"));
     console.log("editProps", editProps.image);
-    const response = await addImage(formData, "image",editProps.image,imagepath,id);
-    alert(JSON.stringify(response));
-    const newprops = { ...interProps, image: response.Path };
+    var newprops = { ...interProps };
+    if (formData.get("image") !== null) {
+      const response = await addImage(
+        formData,
+        "image",
+        editProps.image,
+        imagepath,
+        id
+      );
+      alert(JSON.stringify(response));
+      newprops = { ...interProps, image: response.Path };
+    }
     mapodifElement(id, newprops);
     toggleOpen();
     console.log(interProps);

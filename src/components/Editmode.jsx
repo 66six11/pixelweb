@@ -50,7 +50,7 @@ export default function Editmode({ component, id, ...props }) {
     });
     console.log("newEditProps",newEditProps)
     mapodifElement(id, newEditProps); // 更新 editProps
-  }, [component]); // 监视 component 和 props 的变化
+  }, []); // 监视 component 和 props 的变化
 
   return (
     <div className={component.displayName==='Authorcard'?'':'w-full'}>
