@@ -40,7 +40,7 @@ const Software = React.forwardRef(function Software(
         {titleEle}
         <div className="max-[800px]:hidden">
           {specification &&
-            specification.trim().split("&").map((item, index) => {
+            specification.trim().split("\n").map((item, index) => {
               console.log("item",item);
               return<Specification key={index} text={item} />;
             })}

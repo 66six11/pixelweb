@@ -128,7 +128,7 @@ export default function Editview({ children }) {
                           onChange={(e) =>
                             handleFileChange(key, e.target.files[0])
                           }
-                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          className="shadow appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         {value && (
                           <p className="mt-2 text-gray-700 truncate ">
@@ -140,11 +140,11 @@ export default function Editview({ children }) {
                     ) : key === "keyid" ? (
                       <p>{value}</p>
                     ) : (
-                      <input
+                      <textarea
                         type="text"
                         value={value}
                         onChange={(e) => handleInputChange(key, e.target.value)}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     )}
                   </div>
