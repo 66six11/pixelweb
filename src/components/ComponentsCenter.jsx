@@ -172,19 +172,19 @@ function SetContanier({ id, childrens }) {
             onClick={() => addcomponent(id, "Artist")}
             className="bg-blue-600 text-white rounded-md p-2"
           >
-            添加Artist
+            添加艺术家卡片
           </button>
           <button
             onClick={() => addcomponent(id, "Authorcard")}
             className="bg-blue-600 text-white rounded-md p-2"
           >
-            添加Authorcard
+            添加作者卡片
           </button>
           <button
             onClick={() => addcomponent(id, "Imagecard")}
             className="bg-blue-600 text-white rounded-md p-2"
           >
-            添加Imagecard
+            添加图片卡片
           </button>
         </div>
       </Pageablecontainer>
@@ -207,7 +207,7 @@ function SetFlexbox({ id, childrens }) {
             onClick={() => addcomponent(id, "Authorcard")}
             className="bg-blue-600 text-white rounded-md p-2"
           >
-            添加Authorcard
+            添加作者卡片
           </button>
         </div>
       </Flexbox>
@@ -230,19 +230,19 @@ function SetGridbox({ id, childrens }) {
             onClick={() => addcomponent(id, "Artist")}
             className="bg-blue-600 text-white rounded-md p-2"
           >
-            添加Artist
+            添加艺术家卡片
           </button>
           <button
             onClick={() => addcomponent(id, "Authorcard")}
             className="bg-blue-600 text-white rounded-md p-2"
           >
-            添加Authorcard
+            添加作者卡片
           </button>
           <button
             onClick={() => addcomponent(id, "Imagecard")}
             className="bg-blue-600 text-white rounded-md p-2"
           >
-            添加Imagecard
+            添加图片卡片
           </button>
         </div>
       </Gridbox>

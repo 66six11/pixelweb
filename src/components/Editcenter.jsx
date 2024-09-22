@@ -297,20 +297,20 @@ export default function Editcenter({ fliename, path }) {
             })}
             <div className="flex justify-center items-center gap-8 w-full mt-4">
               <button onClick={() => addcomponent(null, "Flexbox")}>
-                添加Flexbox
+                添加弹性盒子
               </button>
               <button onClick={() => addcomponent(null, "Gridbox")}>
-                添加Gridbox
+                添加网格盒子
               </button>
               <button onClick={() => addcomponent(null, "Pageablecontainer")}>
-                添加Pageablecontainer
+                添加可翻页盒子
               </button>
               <button onClick={() => addcomponent(null, "Tag")}>添加Tag</button>
               <button onClick={() => addcomponent(null, "Software")}>
-                添加Software
+                添加软件卡片
               </button>
               <button onClick={() => addcomponent(null, "Partingline")}>
-                添加Partingline
+                添加分割线
               </button>
             </div>
           </SortableContext>

@@ -53,7 +53,7 @@ export default function Editmode({ component, id, ...props }) {
   }, [component]); // 监视 component 和 props 的变化
 
   return (
-    <div  >
+    <div className={component.displayName==='Authorcard'?'':'w-full'}>
       <button onClick={() => removeElement(id)}>X</button>
       <div
         onClick={handleClick}
